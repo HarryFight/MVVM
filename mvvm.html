@@ -6,14 +6,23 @@
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css"> -->
-    <script src="./Observe.js"></script>
+    <script src="./Observer.js"></script>
     <script src="./Dep.js"></script>
     <script src="./Watcher.js"></script>
     <script src="./Compile.js"></script>
+    <script src="./MVVM.js"></script>
 </head>
 <body>
-
-    <h1>手写MVVM库</h1>
+    <div id="app">
+        <h1>手写MVVM库</h1>
+        <!-- 双向数据绑定 靠的是表单 -->
+        <input type="text" v-model="message">
+        <div>{{message}}</div>
+        <ul>
+            <li>{{message}}</li>
+        </ul>
+        {{message}}
+    </div>
 <script>
 
         var data =  {
@@ -22,7 +31,14 @@
             age: 25,
         };
 
-        new Observe(data)
+        new Observer(data)
+
+        let vm = new MVVM({
+            el: '#app',
+            data: {
+                message: 'hello world!'
+            }
+        });
 </script>
 </body>
 </html>

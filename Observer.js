@@ -1,4 +1,4 @@
-class Observe {
+class Observer {
     constructor(data) {
         //劫持data数据响应
         this.observe(data);
