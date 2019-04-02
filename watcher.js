@@ -1,4 +1,4 @@
-class watcher{
+class Watcher{
     constructor(){
 
         this.value = '';
