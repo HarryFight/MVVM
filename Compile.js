@@ -1,15 +1,35 @@
 class Compile{
     constructor(el, vm){
         //当传入的不是dom节点，则当做选择器处理
-        this.el = isElementNode(el) ? el : document.querySelector(el);
+        this.el = this.isElementNode(el) ? el : document.querySelector(el);
 
-        thi.vm = vm;
+        this.vm = vm;
 
-        //当节点存在时，才开始进行编译  todo：？
+        //当节点存在时，才开始进行编译
         if(this.el){
+            //1. 把真实的dom移动到内存中，即放到文档碎片中（fragment）
             let fragment = this.node2fragment(this.el);
+
+            //2. 将文档碎片中定义的{{}}等语法，进行解析编译和绑定
+            this.compile(fragment);
+
+            //3. 把内存已经编译处理好的fragment重新放回到el元素上去
+            this.el.appendChild(fragment);
         }
     }
+
+    compile(fragment){
+
+    }
+
+    compileElement(){
+
+    }
+
+    compileText(){
+
+    }
+
 
 
     /* 辅助方法  */

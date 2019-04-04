@@ -1,11 +1,10 @@
-class MVVM{
-    constructor(options){
+class MVVM {
+    constructor(options) {
         this.$el = options.el;
         this.$data = options.data;
 
-        debugger;
         // 传入的模板，开始编译
-        if(this.$el){
+        if (this.$el) {
             //数据劫持
             new Observer(this.$data);
 
@@ -13,20 +12,22 @@ class MVVM{
             this.proxyData(this.$data);
 
             //编译模板
-            new Compile(this.el, this);
+            new Compile(this.$el, this);
         }
     }
 
     //简单的挂载数据到this
-    proxyData(data){
-        Object.defineProperty(data,key,{
-            get: function (){
-                return data[key]
-            },
-            set: function(newVal){
-                data[key] = newVal
-                return newVal
-            }
+    proxyData(data) {
+        Object.keys(data).forEach((key) => {
+            Object.defineProperty(data, key, {
+                get: function () {
+                    return data[key]
+                },
+                set: function (newVal) {
+                    data[key] = newVal
+                    return newVal
+                }
+            })
         })
     }
 }

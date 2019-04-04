@@ -30,7 +30,7 @@ class Observer {
 
         Object.defineProperty(data, key, {
             enumerable: true, //可枚举
-            configurable: false, //不可更改
+            configurable: true, //是否可更改
             get: function () {
                 //保证不重复添加订阅者，这里需要判断是否已经添加过  todo：有疑问？
                 Dep.target && dep.addSub(Dep.target)
