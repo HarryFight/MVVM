@@ -11,6 +11,7 @@
     <script src="./Dep.js"></script>
     <script src="./Watcher.js"></script>
     <script src="./Compile.js"></script>
+    <script src="./CompileUtil.js"></script>
     <script src="./MVVM.js"></script>
 </head>
 
@@ -18,7 +19,7 @@
     <div id="app">
         <h1>手写MVVM库</h1>
         <!-- 双向数据绑定 靠的是表单 -->
-        <input type="text" v-model="message">
+        <input type="text" v-model="name">
         <div>{{message}}</div>
         <ul>
             <li>{{message}}</li>
