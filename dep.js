@@ -5,6 +5,7 @@ class Dep{
 
     //添加订阅者
     addSub(watcher){
+        console.log('添加',watcher)
         this.subs.push(watcher);
     }
 

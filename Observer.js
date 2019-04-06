@@ -24,15 +24,14 @@ class Observer {
     defineReactive(data, key, value) {
         let self = this;
 
-        //每个数据变化都对应一个数组，这个数组存放所有的更新操作
-        //todo: 有疑问？
+        //data中每个数据变化都对应一个watcher观察者数组
         let dep = new Dep();
 
         Object.defineProperty(data, key, {
             enumerable: true, //可枚举
             configurable: true, //是否可更改
             get: function () {
-                //保证不重复添加订阅者，这里需要判断是否已经添加过  todo：有疑问？
+                //若有新建watcher，则在get值之前会绑定target关联。否则不重复添加订阅者
                 Dep.target && dep.addSub(Dep.target)
                 return value;
             },
@@ -41,7 +40,6 @@ class Observer {
                 if(newVal !== value){
                     //如果新值是一个对象，则重新进行一次数据劫持
                     self.observe(newVal)
-                    console.log(`set ${value} to ${newVal}`)
                     value = newVal;
 
                     //触发队列通知

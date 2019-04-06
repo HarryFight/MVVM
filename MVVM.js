@@ -1,3 +1,11 @@
+/**
+ * MVVM的核心思路
+ * 1、解析要绑定的dom中的语法（包括文本插值符、指令等等）
+ * 2、将模板中使用到的变量用data中的值替换，更新dom。并将变量添加到watcher中。
+ * 3、
+ */
+
+
 class MVVM {
     constructor(options) {
         this.$el = options.el;
@@ -19,7 +27,7 @@ class MVVM {
     //简单的挂载数据到this
     proxyData(data) {
         Object.keys(data).forEach((key) => {
-            Object.defineProperty(data, key, {
+            Object.defineProperty(this, key, {
                 get: function () {
                     return data[key]
                 },
